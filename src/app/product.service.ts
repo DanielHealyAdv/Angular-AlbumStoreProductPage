@@ -6,12 +6,15 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { AlbumStorePage } from '../../e2e/app.po';
 import { Album } from './album';
+import { Product } from './product';
 
 @Injectable()
 export class ProductService {
 
   _albumUrl: string = '../assets/album.json';
   album: any;
+
+  _productsUrl: string = '../assets/products.json';
 
   constructor(private _http: Http) { }
 
@@ -20,8 +23,9 @@ export class ProductService {
       .map(response => <Album>response.json());
   }
 
-}
-function next(next: any, arg1: (json: Object) => void): Observable<Album> {
-  throw new Error('Function not implemented.');
-}
+  getProducts(): Observable<Product[]> {
+    return this._http.get(this._productsUrl)
+      .map(response => <Product[]>response.json());
+  }
 
+}
