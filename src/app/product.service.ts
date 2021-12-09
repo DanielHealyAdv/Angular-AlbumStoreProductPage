@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { Response } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { userInfo } from 'os';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -11,7 +10,7 @@ import { Product } from './product';
 @Injectable()
 export class ProductService {
 
-  _albumUrl: string = '../assets/album.json';
+  private _albumUrl: string = '../assets/album.json';
   album: any;
 
   _productsUrl: string = '../assets/products.json';
